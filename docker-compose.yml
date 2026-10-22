@@ -1,0 +1,15 @@
+name: nebula
+
+services:
+  nebula:
+    build: .
+    container_name: nebula
+    restart: unless-stopped
+    user: "${UID:-1000}:${GID:-1000}"
+    ports:
+      - "127.0.0.1:${NEBULA_PORT:-7878}:7878"
+    environment:
+      HOST_HOME: ${HOME:-}
+    volumes:
+      - ${CLAUDE_DIR:-${HOME}/.claude}/projects:/data/projects:ro
+      - ${CLAUDE_DIR:-${HOME}/.claude}/sessions:/data/sessions:ro

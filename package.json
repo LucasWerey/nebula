@@ -1,0 +1,10 @@
+{
+  "name": "nebula",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "PROJECTS_DIR=$HOME/.claude/projects SESSIONS_DIR=$HOME/.claude/sessions HOST_HOME=$HOME node server.js"
+  }
+}

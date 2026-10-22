@@ -1,0 +1,124 @@
+@import "tailwindcss/theme.css";
+@import "tailwindcss/preflight.css";
+@import "tailwindcss/utilities.css";
+@import "@ledgerhq/lumen-ui-react/tailwind.css";
+
+@config "../tailwind.config.ts";
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+:root {
+  --agent-main: #b07d1e;
+  --agent-1: #3b6cf6;
+  --agent-2: #0e9f8f;
+  --agent-3: #e07a1f;
+  --agent-4: #d6457f;
+  --agent-5: #2f9e44;
+  --agent-6: #b08900;
+  --agent-7: #d64545;
+  --flow-return: #16a34a;
+  --flow-message: #8b5cf6;
+  --heart-text: #ffffff;
+  --map-bg: radial-gradient(circle at 50% 45%, #ffffff 0%, #f1f3f7 80%);
+  --map-dot: rgb(15 23 42 / 0.12);
+  --aos-bg: radial-gradient(circle at 50% 48%, #fbfaf6 0%, #f3f1ea 70%, #ece9e0 100%);
+  --aos-bone: 20 24 31;
+  --aos-run: 168 128 44;
+  --aos-idle: 112 122 144;
+  --aos-err: 194 87 77;
+  --aos-stall: 217 142 58;
+  --aos-msg: 124 92 196;
+  --aos-orb: 252 251 247;
+  --aos-ring: 20 24 31;
+}
+
+.dark {
+  --agent-main: #f0c674;
+  --agent-1: #7c9cff;
+  --agent-2: #4fd1c5;
+  --agent-3: #f6ad55;
+  --agent-4: #f687b3;
+  --agent-5: #68d391;
+  --agent-6: #f6e05e;
+  --agent-7: #fc8181;
+  --flow-return: #5be49b;
+  --flow-message: #c4a1ff;
+  --heart-text: #1d1505;
+  --map-bg: radial-gradient(circle at 50% 45%, #1a2030 0%, #0d1018 55%, #08090d 100%);
+  --map-dot: rgb(255 255 255 / 0.07);
+  --aos-bg: radial-gradient(circle at 50% 50%, #131a2a 0%, #0c111c 55%, #080b13 100%);
+  --aos-bone: 232 225 210;
+  --aos-run: 196 163 90;
+  --aos-idle: 118 128 150;
+  --aos-err: 194 87 77;
+  --aos-stall: 217 142 58;
+  --aos-msg: 170 140 230;
+  --aos-orb: 15 20 32;
+  --aos-ring: 232 225 210;
+}
+
+body {
+  background: var(--color-background-canvas);
+  color: var(--color-text-base);
+  font-family: Inter, -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+@keyframes status-pulse {
+  0% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--color-background-success) 55%, transparent); }
+  70% { box-shadow: 0 0 0 6px transparent; }
+  100% { box-shadow: 0 0 0 0 transparent; }
+}
+
+.status-pulse {
+  animation: status-pulse 1.6s infinite;
+}
+
+.orb-breathe,
+.tick-spin,
+.heart-ripple {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.orb-breathe {
+  animation: orb-breathe 2.4s ease-in-out infinite;
+}
+
+.tick-spin {
+  animation: tick-spin 14s linear infinite;
+}
+
+.heart-ripple {
+  animation: heart-ripple 2.8s ease-out infinite;
+}
+
+.heart-ripple.delayed {
+  animation-delay: 1.4s;
+}
+
+@keyframes orb-breathe {
+  0%, 100% { transform: scale(0.85); opacity: 0.25; }
+  50% { transform: scale(1.12); opacity: 0.55; }
+}
+
+@keyframes tick-spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes heart-ripple {
+  from { transform: scale(0.8); opacity: 0.55; }
+  to { transform: scale(1.7); opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .status-pulse,
+  .orb-breathe,
+  .tick-spin,
+  .heart-ripple {
+    animation: none;
+  }
+}
